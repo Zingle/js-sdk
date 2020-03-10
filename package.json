@@ -5,7 +5,7 @@
   "engines": {
     "node": ">=10.18"
   },
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Zingle/node-api.git"
