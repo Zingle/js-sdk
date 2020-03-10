@@ -6,7 +6,7 @@ describe('setGet', () => {
         const value = `value-${Math.random()}`;
 
         expect(get(name)).toBeNull();
-        set(name, value)
+        set(name, value);
         expect(get(name)).toEqual(value);
     });
 });
