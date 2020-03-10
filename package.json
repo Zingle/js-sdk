@@ -1,0 +1,46 @@
+{
+  "name": "@zingle/js-sdk",
+  "version": "0.0.0",
+  "description": "JS Api Client",
+  "engines": {
+    "node": ">=10.18"
+  },
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Zingle/node-api.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint src --ext js,jsx --quiet",
+    "lint-fix": "./node_modules/.bin/eslint src --ext js,jsx --fix",
+    "test": "./node_modules/jest/bin/jest.js --notify --detectOpenHandles --passWithNoTests",
+    "test-coverage": "./node_modules/jest/bin/jest.js --detectOpenHandles --passWithNoTests --coverage --coverageReporters=text-lcov > coverage.report",
+    "coveralls": "./node_modules/.bin/coveralls",
+    "build": "babel src --out-dir ./dist",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "@zingle/es-util": "0.0.1",
+    "date-fns": "^2.10.0",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-dynamic-import-node": "^2.3.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "esm": "^3.2.25",
+    "jest": "^25.1.0"
+  }
+}
