@@ -1,4 +1,4 @@
-import { set, get } from '../manager'
+import { set, get } from '../manager';
 
 describe('setGet', () => {
     it('retains values when set', () => {
