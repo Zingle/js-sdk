@@ -17,8 +17,10 @@
     "test": "./node_modules/jest/bin/jest.js --notify --detectOpenHandles --passWithNoTests",
     "test-coverage": "./node_modules/jest/bin/jest.js --detectOpenHandles --passWithNoTests --coverage --coverageReporters=text-lcov > coverage.report",
     "coveralls": "./node_modules/.bin/coveralls",
-    "build": "babel src --out-dir ./dist",
-    "prepublish": "npm run build"
+    "build": "npm run build:files && npm run build:copy",
+    "build:copy": "cp ./package.json ./dist",
+    "build:files": "babel src --out-dir ./dist --ignore \"**/*.test.js\"",
+    "release": "npm run clean && npm run build && npm publish dist"
   },
   "dependencies": {
     "@zingle/es-util": "0.0.1",
