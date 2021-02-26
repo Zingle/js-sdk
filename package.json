@@ -6,27 +6,28 @@
     "node": ">=10.18"
   },
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Zingle/node-api.git"
   },
   "license": "MIT",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint src --ext js,jsx --quiet",
-    "lint-fix": "./node_modules/.bin/eslint src --ext js,jsx --fix",
-    "test": "./node_modules/jest/bin/jest.js --notify --detectOpenHandles --passWithNoTests",
-    "test-coverage": "./node_modules/jest/bin/jest.js --detectOpenHandles --passWithNoTests --coverage --coverageReporters=text-lcov > coverage.report",
+    "lint": "./node_modules/.bin/eslint src --ext ts,js --quiet",
+    "lint-fix": "./node_modules/.bin/eslint src --ext ts,js --fix",
     "coveralls": "./node_modules/.bin/coveralls",
     "clean": "rm -rf ./dist",
-    "build": "npm run build:files && npm run build:copy",
-    "build:copy": "cp ./package.json ./dist",
-    "build:files": "babel src --out-dir ./dist --ignore \"**/*.test.js\"",
-    "release": "npm run clean && npm run build && npm publish dist"
+    "build": "tsc",
+    "prepare": "npm run clean && npm run build",
+    "generate": "openapi-generator-cli generate -g typescript-axios -i https://raw.githubusercontent.com/Zingle/api-specs/master/specs/web-server/complete.v2.yaml -o ./src"
   },
   "dependencies": {
     "@zingle/es-util": "0.0.1",
     "date-fns": "^2.10.0",
-    "isomorphic-fetch": "^2.2.1"
+    "es6-promise": "^4.2.8",
+    "isomorphic-fetch": "^2.2.1",
+    "url-parse": "^1.5.1",
+    "whatwg-fetch": "^3.6.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -35,6 +36,9 @@
     "@babel/polyfill": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
+    "@openapitools/openapi-generator-cli": "^2.1.25",
+    "@typescript-eslint/eslint-plugin": "^4.15.2",
+    "@typescript-eslint/parser": "^4.15.2",
     "babel-eslint": "^10.1.0",
     "babel-plugin-dynamic-import-node": "^2.3.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -45,7 +49,8 @@
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
     "esm": "^3.2.25",
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "typescript": "^4.1.5"
   },
   "publishConfig": {
     "access": "public"
